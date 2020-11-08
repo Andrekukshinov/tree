@@ -31,8 +31,9 @@ public class CompositeComponent implements Component {
 
 	   CompositeComponent that = (CompositeComponent) o;
 
+	   List<Component> thatComponents = that.components;
 	   return components != null ? components
-			 .equals(that.components) : that.components == null;
+			 .equals(thatComponents) : thatComponents == null;
     }
 
     @Override
