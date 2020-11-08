@@ -11,6 +11,7 @@ public class Interpreter {
     private static final char MINUS = '-';
     private static final char MULTIPLY = '*';
     private static final char DIVIDE = '/';
+    private static final int FIRST_CHAR = 0;
     private final ArrayList<AbstractMathExpression> listExpression = new ArrayList<>();
 
 
@@ -19,7 +20,7 @@ public class Interpreter {
 		  if (lexeme.isEmpty()) {
 			 continue;
 		  }
-		  char temp = lexeme.charAt(0);
+		  char temp = lexeme.charAt(FIRST_CHAR);
 		  switch (temp) {
 			 case PLUS:
 				listExpression.add(new TerminalExpressionPlus());

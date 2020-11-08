@@ -11,6 +11,8 @@ import java.util.List;
 
 public class ComponentProcessor {
 
+    private static final int START_BRACKET_INDEX = 1;
+    public static final char NEW_LINE = '\n';
     private final ExpressionRecognizer recognizer;
     private final Interpreter interpreter;
 
@@ -41,7 +43,7 @@ public class ComponentProcessor {
 
     private String calculateExpression(String stringValue, Interpreter interpreter) {
 	   int stringLength = stringValue.length();
-	   String forCalculation = stringValue.substring(1, stringLength - 1);
+	   String forCalculation = stringValue.substring(START_BRACKET_INDEX, stringLength - 1);
 	   return interpreter.calculate(forCalculation);
     }
 
@@ -54,7 +56,7 @@ public class ComponentProcessor {
 				text.append(lexemeValue);
 			 }
 		  }
-		  text.append('\n');
+		  text.append(NEW_LINE);
 	   }
 	   return text.toString();
     }
