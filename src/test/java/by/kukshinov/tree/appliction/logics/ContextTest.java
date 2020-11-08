@@ -14,7 +14,9 @@ public class ContextTest {
 	   Context context = new Context();
 	   context.pushValue(EXPECTED);
 	   ArrayDeque<Integer> contextValues = context.getContextValues();
+
 	   Integer actual = contextValues.pollLast();
+
 	   Assert.assertEquals(actual, EXPECTED);
     }
 
@@ -22,7 +24,9 @@ public class ContextTest {
     public void testPopValueShouldPopNumberFromContext() {
 	   Context context = new Context();
 	   context.pushValue(EXPECTED);
+
 	   Integer actual = context.popValue();
+
 	   Assert.assertEquals(actual, EXPECTED);
     }
 }

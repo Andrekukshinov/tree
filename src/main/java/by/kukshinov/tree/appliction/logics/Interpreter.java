@@ -6,26 +6,31 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Interpreter {
+    private static final String SPACES = "\\s";
+    private static final char PLUS = '+';
+    private static final char MINUS = '-';
+    private static final char MULTIPLY = '*';
+    private static final char DIVIDE = '/';
     private final ArrayList<AbstractMathExpression> listExpression = new ArrayList<>();
 
 
     private void parse(String expression) {
-	   for (String lexeme : expression.split("\\s")) {
+	   for (String lexeme : expression.split(SPACES)) {
 		  if (lexeme.isEmpty()) {
 			 continue;
 		  }
 		  char temp = lexeme.charAt(0);
 		  switch (temp) {
-			 case '+':
+			 case PLUS:
 				listExpression.add(new TerminalExpressionPlus());
 				break;
-			 case '-':
+			 case MINUS:
 				listExpression.add(new TerminalExpressionMinus());
 				break;
-			 case '*':
+			 case MULTIPLY:
 				listExpression.add(new TerminalExpressionMultiply());
 				break;
-			 case '/':
+			 case DIVIDE:
 				listExpression.add(new TerminalExpressionDivide());
 				break;
 			 default:

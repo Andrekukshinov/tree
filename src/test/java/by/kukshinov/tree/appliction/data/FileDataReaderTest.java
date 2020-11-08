@@ -12,13 +12,16 @@ public class FileDataReaderTest {
      @Test
      public void testReadDataShouldReadDataFromFileAndReturnString () throws DataException {
 	    FileDataReader dataReader = new FileDataReader();
+
 	    String actual = dataReader.readData(FILE_PATH);
+
 	    Assert.assertEquals(actual, EXPECTED);
 	}
 
 	@Test(expectedExceptions = DataException.class)//expected
      public void testReadDataShouldThrowException () throws DataException {
 	    FileDataReader dataReader = new FileDataReader();
+
 	    String actual = dataReader.readData("FILE_PATH");
 	}
 }

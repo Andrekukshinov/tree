@@ -19,7 +19,9 @@ public class AbstractParserTest {
 	   Parser successor = Mockito.mock(Parser.class);
 	   TextParser parser = new TextParser(successor);
 	   Pattern pattern = parser.getPattern();
+
 	   String actual = pattern.toString();
+
 	   Assert.assertEquals(actual, PARAGRAPH_PATTERN);
     }
 
@@ -28,7 +30,9 @@ public class AbstractParserTest {
 	   Parser successor = Mockito.mock(Parser.class);
 	   ParagraphParser parser = new ParagraphParser(successor);
 	   Pattern pattern = parser.getPattern();
+
 	   String actual = pattern.toString();
+
 	   Assert.assertEquals(actual, SENTENCE_PATTERN);
     }
 
@@ -37,7 +41,9 @@ public class AbstractParserTest {
 	   ExpressionRecognizer recognizer = Mockito.mock(ExpressionRecognizer.class);
 	   SentenceParser parser = new SentenceParser(recognizer);
 	   Pattern pattern = parser.getPattern();
+
 	   String actual = pattern.toString();
+
 	   Assert.assertEquals(actual, EXPRESSION_PATTERN);
     }
 

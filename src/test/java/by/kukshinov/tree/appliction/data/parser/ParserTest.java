@@ -62,7 +62,9 @@ public class ParserTest {
     public void testParseShouldParseGivenSentenceToComponent(Component expected) {
 	   ExpressionRecognizer recognizer = new ExpressionRecognizer();
 	   SentenceParser parser = new SentenceParser(recognizer);
+
 	   Component parsed = parser.parse(SENTENCE_FOR_SPLITTING);
+
 	   Assert.assertEquals(parsed, expected);
     }
 
@@ -71,7 +73,6 @@ public class ParserTest {
 	   SentenceParser successor = Mockito.mock(SentenceParser.class);
 	   ParagraphParser parser = new ParagraphParser(successor);
 	   when(successor.parse(anyString())).thenReturn(sentence);
-
 
 	   Component parsed = parser.parse(PARAGRAPH_FOR_SPLITTING);
 
@@ -88,4 +89,4 @@ public class ParserTest {
 	   Assert.assertEquals(parsed, expected);
     }
 }
-// TODO: 09.11.2020 refactor 2 data providers into 1
+// TODO: 09.11.2020 refactor 2 data providers into 1 and give clear names for vars

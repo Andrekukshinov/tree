@@ -11,14 +11,18 @@ public class ExpressionRecognizerTest {
     @Test
     public void testIsExpressionShouldReturnTrue() {
         ExpressionRecognizer recognizer = new ExpressionRecognizer();
+
 	   boolean expression = recognizer.isExpression(EXPRESSION);
+
 	   Assert.assertTrue(expression);
     }
 
     @Test
     public void testIsExpressionShouldReturnFalse() {
         ExpressionRecognizer recognizer = new ExpressionRecognizer();
+
 	   boolean expression = recognizer.isExpression(WORD);
+
 	   Assert.assertFalse(expression);
     }
 }

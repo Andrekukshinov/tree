@@ -110,9 +110,7 @@ public class ComponentProcessorTest {
 		  Component start, Component expected) {
 	   ExpressionRecognizer recognizer = Mockito.mock(ExpressionRecognizer.class);
 	   Interpreter interpreter = Mockito.mock(Interpreter.class);
-	   ComponentProcessor componentProcessor = new ComponentProcessor(recognizer,
-			 interpreter);
-
+	   ComponentProcessor componentProcessor = new ComponentProcessor(recognizer,interpreter);
 	   when(recognizer.isExpression(LEXEME_EXPRESSION)).thenReturn(true);
 	   when(interpreter.calculate(EXPRESSION)).thenReturn(EXPRESSION_RESULT);
 
@@ -125,8 +123,8 @@ public class ComponentProcessorTest {
     public void testRestoreTextShouldRestoreTextFromComponent(Component restoreFrom) {
 	   ExpressionRecognizer recognizer = Mockito.mock(ExpressionRecognizer.class);
 	   Interpreter interpreter = Mockito.mock(Interpreter.class);
-	   ComponentProcessor componentProcessor = new ComponentProcessor(recognizer,
-			 interpreter);
+	   ComponentProcessor componentProcessor = new ComponentProcessor(recognizer,interpreter);
+
 	   String actual = componentProcessor.restoreText(restoreFrom);
 
 	   Assert.assertEquals(actual, TEXT_FOR_SPLITTING);
@@ -136,8 +134,8 @@ public class ComponentProcessorTest {
     public void testSortParagraphsByLengthShouldSortParagraphsInComponentBySentenceLength(Component forSorting, Component expected) {
 	   ExpressionRecognizer recognizer = Mockito.mock(ExpressionRecognizer.class);
 	   Interpreter interpreter = Mockito.mock(Interpreter.class);
-	   ComponentProcessor componentProcessor = new ComponentProcessor(recognizer,
-			 interpreter);
+	   ComponentProcessor componentProcessor = new ComponentProcessor(recognizer,interpreter);
+
 	   Component actual = componentProcessor.sortParagraphsBySentenceLength(forSorting);
 
 	   Assert.assertEquals(actual, expected);
@@ -148,8 +146,7 @@ public class ComponentProcessorTest {
     public void testSortSentenceByLexemeLengthShouldSortSentencesInComponentByLexemeLength(Component startComponent, Component expected) {
 	   ExpressionRecognizer recognizer = Mockito.mock(ExpressionRecognizer.class);
 	   Interpreter interpreter = Mockito.mock(Interpreter.class);
-	   ComponentProcessor componentProcessor = new ComponentProcessor(recognizer,
-			 interpreter);
+	   ComponentProcessor componentProcessor = new ComponentProcessor(recognizer,interpreter);
 
 	   Component actual = componentProcessor.sortSentenceByLexemeLength(startComponent);
 

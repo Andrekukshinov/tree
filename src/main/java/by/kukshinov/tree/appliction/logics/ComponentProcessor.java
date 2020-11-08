@@ -74,15 +74,20 @@ public class ComponentProcessor {
 	   for (Component paragraph : root.getChildren()) {
 		  List<Component> resultSentences = new ArrayList<>();
 		  for (Component sentence : paragraph.getChildren()) {
-			 List<Component> resultLexemes = new ArrayList<>(sentence.getChildren());
-			 resultLexemes.sort(Comparator.comparingInt(lexeme2 -> {
-				String lexemeValue = ((LexemeComponent) lexeme2).getValue();
-				return lexemeValue.length();
-			 }));
+			 List<Component> resultLexemes = getSortedLexemes(sentence);
 			 resultSentences.add(new CompositeComponent(resultLexemes));
 		  }
 		  resultParagraphs.add(new CompositeComponent(resultSentences));
 	   }
 	   return new CompositeComponent(resultParagraphs);
+    }
+
+    private List<Component> getSortedLexemes(Component sentence) {
+	   List<Component> resultLexemes = new ArrayList<>(sentence.getChildren());
+	   resultLexemes.sort(Comparator.comparingInt(lexeme2 -> {
+		    String lexemeValue = ((LexemeComponent) lexeme2).getValue();
+		    return lexemeValue.length();
+	  }));
+	   return resultLexemes;
     }
 }

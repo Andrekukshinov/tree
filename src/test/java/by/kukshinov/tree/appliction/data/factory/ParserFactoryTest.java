@@ -15,7 +15,9 @@ public class ParserFactoryTest {
     public void testCreateParserShouldCreateTextParser() {
         Parser successor = Mockito.mock(Parser.class);
 	   ParserFactory parserFactory = new TextParserFactory(successor);
+
 	   Parser textParser = parserFactory.createParser();
+
 	   Assert.assertTrue(textParser instanceof TextParser);
     }
 
@@ -23,7 +25,9 @@ public class ParserFactoryTest {
     public void testCreateParserShouldCreateParagraphParser() {
 	   Parser successor = Mockito.mock(Parser.class);
 	   ParserFactory parserFactory = new ParagraphParserFactory(successor);
+
 	   Parser textParser = parserFactory.createParser();
+
 	   Assert.assertTrue(textParser instanceof ParagraphParser);
     }
 
@@ -31,7 +35,9 @@ public class ParserFactoryTest {
     public void testCreateParserShouldCreateSentenceParser() {
 	   ExpressionRecognizer recognizer = Mockito.mock(ExpressionRecognizer.class);
 	   ParserFactory parserFactory = new SentenceParserFactory(recognizer);
+
 	   Parser textParser = parserFactory.createParser();
+
 	   Assert.assertTrue(textParser instanceof SentenceParser);
     }
 }
