@@ -19,17 +19,16 @@ public abstract class AbstractParser implements Parser {
 	   return successor;
     }
 
-    //
     protected abstract Pattern getPattern();
+
+    protected abstract void process(Matcher matcher, List<Component> childrenComponents);
 
     @Override
     public Component parse(String text) {
 	   Pattern pattern = getPattern();
 	   Matcher matcher = pattern.matcher(text);
-	   List<Component> paragraphsList = new ArrayList<>();
-	   process(matcher, paragraphsList);
-	   return new CompositeComponent(paragraphsList);
+	   List<Component> childrenComponents = new ArrayList<>();
+	   process(matcher, childrenComponents);
+	   return new CompositeComponent(childrenComponents);
     }
-
-    protected abstract void process(Matcher matcher, List<Component> paragraphsList);
 }
