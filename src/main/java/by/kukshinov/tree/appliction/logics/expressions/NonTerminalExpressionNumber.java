@@ -3,7 +3,7 @@ package by.kukshinov.tree.appliction.logics.expressions;
 import by.kukshinov.tree.appliction.logics.Context;
 
 public class NonTerminalExpressionNumber extends AbstractMathExpression {
-    private int number;
+    private final int number;
 
     public NonTerminalExpressionNumber(int number) {
 	   this.number = number;

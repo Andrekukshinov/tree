@@ -12,5 +12,9 @@ public class Context {
     public void pushValue(Integer value) {
 	   contextValues.push(value);
     }
+
+    //for testing
+    ArrayDeque<Integer> getContextValues() {
+	   return contextValues;
+    }
 }
-// TODO: 07.11.2020 create test
