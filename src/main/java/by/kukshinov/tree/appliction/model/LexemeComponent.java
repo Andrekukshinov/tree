@@ -40,21 +40,22 @@ public class LexemeComponent implements Component{
     }
 
     @Override
-    public boolean equals(Object o) {
-	   if (this == o) {
+    public boolean equals(Object thatComponent) {
+	   if (this == thatComponent) {
 		  return true;
 	   }
-	   if (o == null || getClass() != o.getClass()) {
+	   if (thatComponent == null || getClass() != thatComponent.getClass()) {
 		  return false;
 	   }
 
-	   LexemeComponent component = (LexemeComponent) o;
+	   LexemeComponent component = (LexemeComponent) thatComponent;
 
 	   if (getType() != component.getType()) {
 		  return false;
 	   }
-	   return getValue() != null ? getValue().equals(component.getValue()) : component
-			 .getValue() == null;
+	   String thatComponentValue = component.getValue();
+	   return getValue() != null ? getValue().equals(
+			 thatComponentValue) : thatComponentValue == null;
     }
 
     @Override

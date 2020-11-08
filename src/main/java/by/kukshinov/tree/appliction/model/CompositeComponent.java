@@ -21,15 +21,15 @@ public class CompositeComponent implements Component {
     }
 
     @Override
-    public boolean equals(Object o) {
-	   if (this == o) {
+    public boolean equals(Object thatComponent) {
+	   if (this == thatComponent) {
 		  return true;
 	   }
-	   if (o == null || getClass() != o.getClass()) {
+	   if (thatComponent == null || getClass() != thatComponent.getClass()) {
 		  return false;
 	   }
 
-	   CompositeComponent that = (CompositeComponent) o;
+	   CompositeComponent that = (CompositeComponent) thatComponent;
 
 	   List<Component> thatComponents = that.components;
 	   return components != null ? components
