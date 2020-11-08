@@ -27,13 +27,9 @@ public abstract class AbstractParser implements Parser {
 	   Pattern pattern = getPattern();
 	   Matcher matcher = pattern.matcher(text);
 	   List<Component> paragraphsList = new ArrayList<>();
-	   while (matcher.find()) {
-		  String paragraph = matcher.group();
-		  Parser successor = getSuccessor();
-		  process(paragraphsList, paragraph, successor);
-	   }
+	   process(matcher, paragraphsList);
 	   return new CompositeComponent(paragraphsList);
     }
 
-    protected abstract void process(List<Component> paragraphsList, String paragraph, Parser successor);
+    protected abstract void process(Matcher matcher, List<Component> paragraphsList);
 }

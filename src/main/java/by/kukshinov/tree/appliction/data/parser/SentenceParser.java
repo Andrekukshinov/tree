@@ -26,13 +26,17 @@ public class SentenceParser extends AbstractParser{
 	   return Pattern.compile(EXPRESSION_PATTERN);
     }
 
-    @Override
-    protected void process(List<Component> lexemesList, String lexeme, Parser successor) {
-	   if(recognizer.isExpression(lexeme)) {
-		  lexemesList.add(LexemeComponent.expression( lexeme));
-	   } else {
 
-		  lexemesList.add(LexemeComponent.word( lexeme));
+    @Override
+    protected void process(
+		  Matcher matcher, List<Component> lexemesList) {
+	   while (matcher.find()) {
+		  String lexeme = matcher.group();
+		  if (recognizer.isExpression(lexeme)) {
+			 lexemesList.add(LexemeComponent.expression(lexeme));
+		  } else {
+			 lexemesList.add(LexemeComponent.word(lexeme));
+		  }
 	   }
     }
 }
