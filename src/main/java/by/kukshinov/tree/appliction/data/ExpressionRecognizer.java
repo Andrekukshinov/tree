@@ -7,4 +7,4 @@ public class ExpressionRecognizer {
     public boolean isExpression(String lexeme) {
 	   return lexeme.startsWith(EXPRESSION_PREFIX);
     }
-}// TODO: 08.11.2020 test
+}

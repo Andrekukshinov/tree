@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ParserFactoryTest {
+
     @Test
     public void testCreateParserShouldCreateTextParser() {
 	   ParserFactory parserFactory = new TextParserFactory(null);

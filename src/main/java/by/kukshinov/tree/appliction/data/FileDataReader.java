@@ -10,7 +10,7 @@ import java.util.List;
 
 public class FileDataReader {
     public String readData(String filePath) throws DataException {
-	   Path path = Paths.get("file");
+	   Path path = Paths.get(filePath);
 	   StringBuilder resultBuilder = new StringBuilder();
 	   try {
 		  List<String> fileLines = Files.readAllLines(path, StandardCharsets.UTF_8);
@@ -21,4 +21,4 @@ public class FileDataReader {
 	   }
     }
 }
-// TODO: 07.11.2020 create test
+
