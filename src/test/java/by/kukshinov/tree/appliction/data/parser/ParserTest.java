@@ -3,16 +3,9 @@ package by.kukshinov.tree.appliction.data.parser;
 import by.kukshinov.tree.appliction.data.ExpressionRecognizer;
 import by.kukshinov.tree.appliction.logics.ComponentProcessorTest;
 import by.kukshinov.tree.appliction.model.Component;
-import by.kukshinov.tree.appliction.model.CompositeComponent;
-import by.kukshinov.tree.appliction.model.LexemeComponent;
 import org.mockito.Mockito;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
@@ -34,7 +27,8 @@ public class ParserTest {
     }
 
     @Test(dataProvider = "getComponentWithExpression", dataProviderClass = ComponentProcessorTest.class)
-    public void testParseShouldParseGivenParagraphToComponent (Component expected, Component sentence) {
+    public void testParseShouldParseGivenParagraphToComponent(
+		  Component expected, Component sentence) {
 	   SentenceParser successor = Mockito.mock(SentenceParser.class);
 	   ParagraphParser parser = new ParagraphParser(successor);
 	   when(successor.parse(anyString())).thenReturn(sentence);
@@ -45,7 +39,8 @@ public class ParserTest {
     }
 
     @Test(dataProvider = "getComponentWithExpression", dataProviderClass = ComponentProcessorTest.class)
-    public void testParseShouldParseGivenTextToComponent(Component expected, Component paragraph) {
+    public void testParseShouldParseGivenTextToComponent(
+		  Component expected, Component paragraph) {
 	   ParagraphParser successor = Mockito.mock(ParagraphParser.class);
 	   TextParser parser = new TextParser(successor);
 	   when(successor.parse(anyString())).thenReturn(paragraph);

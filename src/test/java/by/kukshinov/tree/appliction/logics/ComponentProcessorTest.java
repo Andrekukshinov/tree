@@ -50,11 +50,15 @@ public class ComponentProcessorTest {
 	   LexemeComponent yearsBlank = LexemeComponent.word(" years");
 	   LexemeComponent dotBlank = LexemeComponent.word(". ");
 
-	   List<Component> lexemesExpression = Arrays.asList(a, space, expression, years, dot);
+	   List<Component> lexemesExpression = Arrays
+			 .asList(a, space, expression, years, dot);
 	   Component rootTextWithExpressions = getRootComponent(lexemesExpression);
-	   
+
 	   Component sentenceExpression = new CompositeComponent(lexemesExpression);
-	   List<Component> sentencesExpression = Arrays.asList(sentenceExpression, sentenceExpression, sentenceExpression, sentenceExpression, sentenceExpression, sentenceExpression, sentenceExpression);
+	   List<Component> sentencesExpression = Arrays
+			 .asList(sentenceExpression, sentenceExpression, sentenceExpression,
+				    sentenceExpression, sentenceExpression, sentenceExpression,
+				    sentenceExpression);
 	   Component paragraphExpression = new CompositeComponent(sentencesExpression);
 
 
@@ -62,21 +66,33 @@ public class ComponentProcessorTest {
 	   Component rootTextWithNumbers = getRootComponent(lexemesNumber);
 
 	   Component sentenceWithNumber = new CompositeComponent(lexemesNumber);
-	   List<Component> longSentencesNumbers = Arrays.asList(sentenceWithNumber, sentenceWithNumber, sentenceWithNumber, sentenceWithNumber);
-	   List<Component> shortSentencesNumbers = Arrays.asList(sentenceWithNumber, sentenceWithNumber);
-	   List<Component> midSentencesNumbers = Arrays.asList(sentenceWithNumber, sentenceWithNumber, sentenceWithNumber);
+	   List<Component> longSentencesNumbers = Arrays
+			 .asList(sentenceWithNumber, sentenceWithNumber, sentenceWithNumber,
+				    sentenceWithNumber);
+	   List<Component> shortSentencesNumbers = Arrays
+			 .asList(sentenceWithNumber, sentenceWithNumber);
+	   List<Component> midSentencesNumbers = Arrays
+			 .asList(sentenceWithNumber, sentenceWithNumber, sentenceWithNumber);
 
 	   Component longParagraphWithNumber = new CompositeComponent(longSentencesNumbers);
-	   Component shortParagraphWithNumber = new CompositeComponent(shortSentencesNumbers);
+	   Component shortParagraphWithNumber = new CompositeComponent(
+			 shortSentencesNumbers);
 	   Component midParagraphWithNumber = new CompositeComponent(midSentencesNumbers);
-	   List<Component> paragraphsForSorting = Arrays.asList(longParagraphWithNumber, shortParagraphWithNumber, midParagraphWithNumber);
-	   List<Component> paragraphsSorted = Arrays.asList(shortParagraphWithNumber, midParagraphWithNumber, longParagraphWithNumber);
+	   List<Component> paragraphsForSorting = Arrays
+			 .asList(longParagraphWithNumber, shortParagraphWithNumber,
+				    midParagraphWithNumber);
+	   List<Component> paragraphsSorted = Arrays
+			 .asList(shortParagraphWithNumber, midParagraphWithNumber,
+				    longParagraphWithNumber);
 	   Component paragraphsStarting = new CompositeComponent(paragraphsForSorting);
 	   Component rootTextSorted = new CompositeComponent(paragraphsSorted);
 
-	   List<Component> sentenceLexemesBlanksExpected = Arrays.asList(spaceBlank, dotBlank, aBlank,numberWithBlank,yearsBlank);
-	   List<Component> startLexemesWithBlanks = Arrays.asList(aBlank, spaceBlank, numberWithBlank,yearsBlank, dotBlank);
-	   Component expectedTextWithBlanks = getRootComponent(sentenceLexemesBlanksExpected);
+	   List<Component> sentenceLexemesBlanksExpected = Arrays
+			 .asList(spaceBlank, dotBlank, aBlank, numberWithBlank, yearsBlank);
+	   List<Component> startLexemesWithBlanks = Arrays
+			 .asList(aBlank, spaceBlank, numberWithBlank, yearsBlank, dotBlank);
+	   Component expectedTextWithBlanks = getRootComponent(
+			 sentenceLexemesBlanksExpected);
 	   Component startTextWithBlanks = getRootComponent(startLexemesWithBlanks);
 
 	   String methodName = method.getName();
@@ -87,12 +103,14 @@ public class ComponentProcessorTest {
 		  result[0][1] = rootTextWithExpressions;
 		  return result;
 	   }
-	   if ("testRestoreTextShouldRestoreTextFromComponent".equalsIgnoreCase(methodName)) {
+	   if ("testRestoreTextShouldRestoreTextFromComponent"
+			 .equalsIgnoreCase(methodName)) {
 		  result = new Object[1][1];
 		  result[0][0] = rootTextWithNumbers;
 		  return result;
 	   }
-	   if ("testSortParagraphsByLengthShouldSortParagraphsInComponentBySentenceLength".equalsIgnoreCase(methodName)) {
+	   if ("testSortParagraphsByLengthShouldSortParagraphsInComponentBySentenceLength"
+			 .equalsIgnoreCase(methodName)) {
 		  result = new Object[1][2];
 		  result[0][0] = paragraphsStarting;
 		  result[0][1] = rootTextSorted;
@@ -103,7 +121,8 @@ public class ComponentProcessorTest {
 		  result[0][0] = sentenceExpression;
 		  return result;
 	   }
-	   if ("testParseShouldParseGivenParagraphToComponent".equalsIgnoreCase(methodName)) {
+	   if ("testParseShouldParseGivenParagraphToComponent"
+			 .equalsIgnoreCase(methodName)) {
 		  result = new Object[1][2];
 		  result[0][0] = paragraphExpression;
 		  result[0][1] = sentenceExpression;
@@ -116,10 +135,10 @@ public class ComponentProcessorTest {
 		  return result;
 	   }
 //	   if ("testSortSentenceByLexemeLengthShouldSortSentencesInComponentByLexemeLength".equalsIgnoreCase(methodName)) {
-		  result = new Object[1][2];
-		  result[0][0] = startTextWithBlanks;
-		  result[0][1] = expectedTextWithBlanks;
-		  return result;
+	   result = new Object[1][2];
+	   result[0][0] = startTextWithBlanks;
+	   result[0][1] = expectedTextWithBlanks;
+	   return result;
 //	   }
     }
 
@@ -128,7 +147,8 @@ public class ComponentProcessorTest {
 		  Component start, Component expected) {
 	   ExpressionRecognizer recognizer = Mockito.mock(ExpressionRecognizer.class);
 	   Interpreter interpreter = Mockito.mock(Interpreter.class);
-	   ComponentProcessor componentProcessor = new ComponentProcessor(recognizer,interpreter);
+	   ComponentProcessor componentProcessor = new ComponentProcessor(recognizer,
+			 interpreter);
 	   when(recognizer.isExpression(LEXEME_EXPRESSION)).thenReturn(true);
 	   when(interpreter.calculate(EXPRESSION)).thenReturn(EXPRESSION_RESULT);
 
@@ -141,7 +161,8 @@ public class ComponentProcessorTest {
     public void testRestoreTextShouldRestoreTextFromComponent(Component restoreFrom) {
 	   ExpressionRecognizer recognizer = Mockito.mock(ExpressionRecognizer.class);
 	   Interpreter interpreter = Mockito.mock(Interpreter.class);
-	   ComponentProcessor componentProcessor = new ComponentProcessor(recognizer,interpreter);
+	   ComponentProcessor componentProcessor = new ComponentProcessor(recognizer,
+			 interpreter);
 
 	   String actual = componentProcessor.restoreText(restoreFrom);
 
@@ -149,10 +170,12 @@ public class ComponentProcessorTest {
     }
 
     @Test(dataProvider = "getComponentWithExpression")
-    public void testSortParagraphsByLengthShouldSortParagraphsInComponentBySentenceLength(Component forSorting, Component expected) {
+    public void testSortParagraphsByLengthShouldSortParagraphsInComponentBySentenceLength(
+		  Component forSorting, Component expected) {
 	   ExpressionRecognizer recognizer = Mockito.mock(ExpressionRecognizer.class);
 	   Interpreter interpreter = Mockito.mock(Interpreter.class);
-	   ComponentProcessor componentProcessor = new ComponentProcessor(recognizer,interpreter);
+	   ComponentProcessor componentProcessor = new ComponentProcessor(recognizer,
+			 interpreter);
 
 	   Component actual = componentProcessor.sortParagraphsBySentenceLength(forSorting);
 
@@ -161,10 +184,12 @@ public class ComponentProcessorTest {
     }
 
     @Test(dataProvider = "getComponentWithExpression")
-    public void testSortSentenceByLexemeLengthShouldSortSentencesInComponentByLexemeLength(Component startComponent, Component expected) {
+    public void testSortSentenceByLexemeLengthShouldSortSentencesInComponentByLexemeLength(
+		  Component startComponent, Component expected) {
 	   ExpressionRecognizer recognizer = Mockito.mock(ExpressionRecognizer.class);
 	   Interpreter interpreter = Mockito.mock(Interpreter.class);
-	   ComponentProcessor componentProcessor = new ComponentProcessor(recognizer,interpreter);
+	   ComponentProcessor componentProcessor = new ComponentProcessor(recognizer,
+			 interpreter);
 
 	   Component actual = componentProcessor.sortSentenceByLexemeLength(startComponent);
 

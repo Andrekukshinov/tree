@@ -37,7 +37,8 @@ public class Interpreter {
 			 default:
 				Scanner scan = new Scanner(lexeme);
 				if (scan.hasNextInt()) {
-				    listExpression.add(new NonTerminalExpressionNumber(scan.nextInt()));
+				    listExpression
+						  .add(new NonTerminalExpressionNumber(scan.nextInt()));
 				}
 		  }
 	   }

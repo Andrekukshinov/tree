@@ -43,7 +43,8 @@ public class ComponentProcessor {
 
     private String calculateExpression(String stringValue, Interpreter interpreter) {
 	   int stringLength = stringValue.length();
-	   String forCalculation = stringValue.substring(START_BRACKET_INDEX, stringLength - 1);
+	   String forCalculation = stringValue
+			 .substring(START_BRACKET_INDEX, stringLength - 1);
 	   return interpreter.calculate(forCalculation);
     }
 
@@ -87,9 +88,9 @@ public class ComponentProcessor {
     private List<Component> getSortedLexemes(Component sentence) {
 	   List<Component> resultLexemes = new ArrayList<>(sentence.getChildren());
 	   resultLexemes.sort(Comparator.comparingInt(lexeme2 -> {
-		    String lexemeValue = ((LexemeComponent) lexeme2).getValue();
-		    return lexemeValue.length();
-	  }));
+		  String lexemeValue = ((LexemeComponent) lexeme2).getValue();
+		  return lexemeValue.length();
+	   }));
 	   return resultLexemes;
     }
 }

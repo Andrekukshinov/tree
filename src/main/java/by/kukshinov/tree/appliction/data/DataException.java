@@ -1,6 +1,6 @@
 package by.kukshinov.tree.appliction.data;
 
-public class DataException extends Exception{
+public class DataException extends Exception {
     public DataException() {
     }
 

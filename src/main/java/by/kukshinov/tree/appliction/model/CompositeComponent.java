@@ -1,6 +1,7 @@
 package by.kukshinov.tree.appliction.model;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CompositeComponent implements Component {
     private final List<Component> components;
@@ -17,7 +18,7 @@ public class CompositeComponent implements Component {
 
     @Override
     public String toString() {
-	   return "CompositeComponent{" + "components=" + components + '}'+'\n';
+	   return "CompositeComponent{" + "components=" + components + '}' + '\n';
     }
 
     @Override

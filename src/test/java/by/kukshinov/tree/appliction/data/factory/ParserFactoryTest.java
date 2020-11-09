@@ -13,7 +13,7 @@ public class ParserFactoryTest {
 
     @Test
     public void testCreateParserShouldCreateTextParser() {
-        Parser successor = Mockito.mock(Parser.class);
+	   Parser successor = Mockito.mock(Parser.class);
 	   ParserFactory parserFactory = new TextParserFactory(successor);
 
 	   Parser textParser = parserFactory.createParser();

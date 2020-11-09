@@ -10,7 +10,7 @@ public class ExpressionRecognizerTest {
 
     @Test
     public void testIsExpressionShouldReturnTrue() {
-        ExpressionRecognizer recognizer = new ExpressionRecognizer();
+	   ExpressionRecognizer recognizer = new ExpressionRecognizer();
 
 	   boolean expression = recognizer.isExpression(EXPRESSION);
 
@@ -19,7 +19,7 @@ public class ExpressionRecognizerTest {
 
     @Test
     public void testIsExpressionShouldReturnFalse() {
-        ExpressionRecognizer recognizer = new ExpressionRecognizer();
+	   ExpressionRecognizer recognizer = new ExpressionRecognizer();
 
 	   boolean expression = recognizer.isExpression(WORD);
 

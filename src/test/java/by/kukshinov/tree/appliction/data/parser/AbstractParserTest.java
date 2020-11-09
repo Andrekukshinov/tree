@@ -13,7 +13,6 @@ public class AbstractParserTest {
     private static final String EXPRESSION_PATTERN = "([\\s.?!]\\w+|\\s|,|\\.|\\?)|(\\[(\\d+|\\s|\\+|\\*|-|\\\\)+])";
 
 
-
     @Test
     public void testGetPatternShouldReturnParagraphPattern() {
 	   Parser successor = Mockito.mock(Parser.class);

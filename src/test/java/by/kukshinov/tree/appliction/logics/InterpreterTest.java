@@ -1,6 +1,5 @@
 package by.kukshinov.tree.appliction.logics;
 
-import junit.framework.TestCase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

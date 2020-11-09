@@ -1,9 +1,11 @@
 package by.kukshinov.tree.appliction.model;
 
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-public class LexemeComponent implements Component{
+public class LexemeComponent implements Component {
     private final LexemeType type;
     private final String value;
 
@@ -13,11 +15,11 @@ public class LexemeComponent implements Component{
     }
 
     public static LexemeComponent word(String value) {
-        return new LexemeComponent(LexemeType.WORD, value);
+	   return new LexemeComponent(LexemeType.WORD, value);
     }
 
     public static LexemeComponent expression(String value) {
-        return new LexemeComponent(LexemeType.EXPRESSION, value);
+	   return new LexemeComponent(LexemeType.EXPRESSION, value);
     }
 
 
@@ -54,8 +56,8 @@ public class LexemeComponent implements Component{
 		  return false;
 	   }
 	   String thatComponentValue = component.getValue();
-	   return getValue() != null ? getValue().equals(
-			 thatComponentValue) : thatComponentValue == null;
+	   return getValue() != null ? getValue()
+			 .equals(thatComponentValue) : thatComponentValue == null;
     }
 
     @Override
