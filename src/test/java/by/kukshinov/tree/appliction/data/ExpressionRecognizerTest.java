@@ -5,8 +5,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ExpressionRecognizerTest {
-    public static final String EXPRESSION = "[8 2 7 4 + * -]";
-    public static final String WORD = "Sam5";
+    private static final String EXPRESSION = "[8 2 7 4 + * -]";
+    private static final String WORD = "Sam5";
 
     @Test
     public void testIsExpressionShouldReturnTrue() {

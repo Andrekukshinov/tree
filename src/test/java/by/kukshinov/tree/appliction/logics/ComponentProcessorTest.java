@@ -17,9 +17,9 @@ import static org.mockito.Mockito.when;
 
 public class ComponentProcessorTest {
     private static final String TEXT_FOR_SPLITTING = " A 36 years. A 36 years. A 36 years. A 36 years. A 36 years. A 36 years. A 36 years.\n" + " A 36 years. A 36 years. A 36 years. A 36 years. A 36 years. A 36 years. A 36 years.\n" + " A 36 years. A 36 years. A 36 years. A 36 years. A 36 years. A 36 years. A 36 years.\n" + " A 36 years. A 36 years. A 36 years. A 36 years. A 36 years. A 36 years. A 36 years.\n";
-    public static final String LEXEME_EXPRESSION = "[4 7 * 8 +]";
-    public static final String EXPRESSION = "4 7 * 8 +";
-    public static final String EXPRESSION_RESULT = "36";
+    private static final String LEXEME_EXPRESSION = "[4 7 * 8 +]";
+    private static final String EXPRESSION = "4 7 * 8 +";
+    private static final String EXPRESSION_RESULT = "36";
 
     private static Component getRootComponent(List<Component> expectedLexemes) {
 	   Component expectedSentence = new CompositeComponent(expectedLexemes);

@@ -7,7 +7,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ParagraphParser extends AbstractParser {
-
     private static final String SENTENCE_PATTERN = ".*?[.!?]";
 
     public ParagraphParser(Parser successor) {

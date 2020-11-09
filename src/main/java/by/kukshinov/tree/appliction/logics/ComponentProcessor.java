@@ -10,7 +10,6 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ComponentProcessor {
-
     private static final int START_BRACKET_INDEX = 1;
     private static final char NEW_LINE = '\n';
     private final ExpressionRecognizer recognizer;

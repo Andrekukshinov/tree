@@ -7,7 +7,7 @@ import java.util.ArrayDeque;
 
 public class ContextTest {
 
-    public static final Integer EXPECTED = 7;
+    private static final Integer EXPECTED = 7;
 
     @Test
     public void testPushValueShouldPushNumberToContext() {

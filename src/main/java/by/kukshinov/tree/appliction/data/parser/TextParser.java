@@ -7,7 +7,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TextParser extends AbstractParser {
-
     private static final String PARAGRAPH_PATTERN = "(.|\\n)+?\\n";
 
     public TextParser(Parser successor) {
