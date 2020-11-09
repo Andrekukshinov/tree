@@ -21,7 +21,7 @@ public class ComponentProcessorTest {
     public static final String EXPRESSION = "4 7 * 8 +";
     public static final String EXPRESSION_RESULT = "36";
 
-    private Component getRootComponent(List<Component> expectedLexemes) {
+    private static Component getRootComponent(List<Component> expectedLexemes) {
 	   Component expectedSentence = new CompositeComponent(expectedLexemes);
 	   List<Component> expectedSentences = Arrays
 			 .asList(expectedSentence, expectedSentence, expectedSentence,
@@ -35,72 +35,90 @@ public class ComponentProcessorTest {
     }
 
     @DataProvider
-    public Object[][] getComponentWithExpression(Method method) {
+    public static Object[][] getComponentWithExpression(Method method) {
 	   Object[][] result;
 	   LexemeComponent a = LexemeComponent.word(" A");
 	   LexemeComponent space = LexemeComponent.word(" ");
 	   LexemeComponent expression = LexemeComponent.expression("[4 5+]");
 	   LexemeComponent years = LexemeComponent.word(" years");
 	   LexemeComponent dot = LexemeComponent.word(".");
-	   LexemeComponent nine = LexemeComponent.word("36");
+	   LexemeComponent number = LexemeComponent.word("36");
 
 	   LexemeComponent aBlank = LexemeComponent.word(" A ");
 	   LexemeComponent spaceBlank = LexemeComponent.word(" ");
-	   LexemeComponent nineBlank = LexemeComponent.word(" 36 ");
+	   LexemeComponent numberWithBlank = LexemeComponent.word(" 36 ");
 	   LexemeComponent yearsBlank = LexemeComponent.word(" years");
 	   LexemeComponent dotBlank = LexemeComponent.word(". ");
 
 	   List<Component> lexemesExpression = Arrays.asList(a, space, expression, years, dot);
-	   Component expectedExpression = getRootComponent(lexemesExpression);
+	   Component rootTextWithExpressions = getRootComponent(lexemesExpression);
+	   
+	   Component sentenceExpression = new CompositeComponent(lexemesExpression);
+	   List<Component> sentencesExpression = Arrays.asList(sentenceExpression, sentenceExpression, sentenceExpression, sentenceExpression, sentenceExpression, sentenceExpression, sentenceExpression);
+	   Component paragraphExpression = new CompositeComponent(sentencesExpression);
 
-	   List<Component> lexemesNine = Arrays.asList(a, space, nine, years, dot);
-	   Component startNine = getRootComponent(lexemesNine);
 
-	   Component sentenceNine = new CompositeComponent(lexemesNine);
-	   List<Component> sentencesNines1 = Arrays
-			 .asList(sentenceNine, sentenceNine, sentenceNine,
-				    sentenceNine);
-	   List<Component> sentencesNines2 = Arrays
-			 .asList(sentenceNine, sentenceNine);
-	   List<Component> sentencesNines3 = Arrays
-			 .asList(sentenceNine, sentenceNine, sentenceNine);
+	   List<Component> lexemesNumber = Arrays.asList(a, space, number, years, dot);
+	   Component rootTextWithNumbers = getRootComponent(lexemesNumber);
 
-	   Component paragraphNine1 = new CompositeComponent(sentencesNines1);
-	   Component paragraphNine2 = new CompositeComponent(sentencesNines2);
-	   Component paragraphNine3 = new CompositeComponent(sentencesNines3);
-	   List<Component> paragraphsForSorting = Arrays.asList(paragraphNine1, paragraphNine2, paragraphNine3);
-	   List<Component> paragraphNines = Arrays.asList(paragraphNine2, paragraphNine3, paragraphNine1);
+	   Component sentenceWithNumber = new CompositeComponent(lexemesNumber);
+	   List<Component> longSentencesNumbers = Arrays.asList(sentenceWithNumber, sentenceWithNumber, sentenceWithNumber, sentenceWithNumber);
+	   List<Component> shortSentencesNumbers = Arrays.asList(sentenceWithNumber, sentenceWithNumber);
+	   List<Component> midSentencesNumbers = Arrays.asList(sentenceWithNumber, sentenceWithNumber, sentenceWithNumber);
+
+	   Component longParagraphWithNumber = new CompositeComponent(longSentencesNumbers);
+	   Component shortParagraphWithNumber = new CompositeComponent(shortSentencesNumbers);
+	   Component midParagraphWithNumber = new CompositeComponent(midSentencesNumbers);
+	   List<Component> paragraphsForSorting = Arrays.asList(longParagraphWithNumber, shortParagraphWithNumber, midParagraphWithNumber);
+	   List<Component> paragraphsSorted = Arrays.asList(shortParagraphWithNumber, midParagraphWithNumber, longParagraphWithNumber);
 	   Component paragraphsStarting = new CompositeComponent(paragraphsForSorting);
-	   Component paragraphsNines = new CompositeComponent(paragraphNines);
+	   Component rootTextSorted = new CompositeComponent(paragraphsSorted);
 
-	   List<Component> expectedLexemesWithBlanks = Arrays.asList(spaceBlank, dotBlank, aBlank, nineBlank ,yearsBlank);
-	   List<Component> startLexemesWithBlanks = Arrays.asList(aBlank, spaceBlank, nineBlank ,yearsBlank, dotBlank);
-	   Component expectedExpressionWithBlanks = getRootComponent(expectedLexemesWithBlanks);
-	   Component startExpressionWithBlanks = getRootComponent(startLexemesWithBlanks);
+	   List<Component> sentenceLexemesBlanksExpected = Arrays.asList(spaceBlank, dotBlank, aBlank,numberWithBlank,yearsBlank);
+	   List<Component> startLexemesWithBlanks = Arrays.asList(aBlank, spaceBlank, numberWithBlank,yearsBlank, dotBlank);
+	   Component expectedTextWithBlanks = getRootComponent(sentenceLexemesBlanksExpected);
+	   Component startTextWithBlanks = getRootComponent(startLexemesWithBlanks);
 
 	   String methodName = method.getName();
 	   if ("testCalculateExpressionsShouldParseGivenComponentAndCalculateAllExpressions"
 			 .equalsIgnoreCase(methodName)) {
 		  result = new Object[1][2];
-		  result[0][0] = expectedExpression;
-		  result[0][1] = expectedExpression;
+		  result[0][0] = rootTextWithExpressions;
+		  result[0][1] = rootTextWithExpressions;
 		  return result;
 	   }
 	   if ("testRestoreTextShouldRestoreTextFromComponent".equalsIgnoreCase(methodName)) {
 		  result = new Object[1][1];
-		  result[0][0] = startNine;
+		  result[0][0] = rootTextWithNumbers;
 		  return result;
 	   }
 	   if ("testSortParagraphsByLengthShouldSortParagraphsInComponentBySentenceLength".equalsIgnoreCase(methodName)) {
 		  result = new Object[1][2];
 		  result[0][0] = paragraphsStarting;
-		  result[0][1] = paragraphsNines;
+		  result[0][1] = rootTextSorted;
+		  return result;
+	   }
+	   if ("testParseShouldParseGivenSentenceToComponent".equalsIgnoreCase(methodName)) {
+		  result = new Object[1][1];
+		  result[0][0] = sentenceExpression;
+		  return result;
+	   }
+	   if ("testParseShouldParseGivenParagraphToComponent".equalsIgnoreCase(methodName)) {
+		  result = new Object[1][2];
+		  result[0][0] = paragraphExpression;
+		  result[0][1] = sentenceExpression;
+		  return result;
+	   }
+	   if ("testParseShouldParseGivenTextToComponent".equalsIgnoreCase(methodName)) {
+		  result = new Object[1][2];
+		  result[0][0] = rootTextWithExpressions;
+		  result[0][1] = paragraphExpression;
 		  return result;
 	   }
 //	   if ("testSortSentenceByLexemeLengthShouldSortSentencesInComponentByLexemeLength".equalsIgnoreCase(methodName)) {
 		  result = new Object[1][2];
-		  result[0][0] = startExpressionWithBlanks;
-		  result[0][1] = expectedExpressionWithBlanks;
+		  result[0][0] = startTextWithBlanks;
+		  result[0][1] = expectedTextWithBlanks;
 		  return result;
 //	   }
     }
