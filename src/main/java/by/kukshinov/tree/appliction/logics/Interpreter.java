@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Interpreter {
-    private static final String SPACES = "\\s";
+    private static final String SPACES = "\\s+";
     private static final char PLUS = '+';
     private static final char MINUS = '-';
     private static final char MULTIPLY = '*';
