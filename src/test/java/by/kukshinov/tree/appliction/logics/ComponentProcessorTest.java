@@ -38,7 +38,6 @@ public class ComponentProcessorTest {
 
     @DataProvider
     public static Object[][] getComponentWithExpression(Method method) {
-	   Object[][] result;
 	   LexemeComponent a = LexemeComponent.word(" A");
 	   LexemeComponent space = LexemeComponent.word(" ");
 	   LexemeComponent expression = LexemeComponent.expression("[4 5+]");

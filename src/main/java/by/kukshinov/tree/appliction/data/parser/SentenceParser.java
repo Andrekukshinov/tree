@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 public class SentenceParser extends AbstractParser {
 
     private static final String WORD_PATTERN = "([\\s.?!]\\w+|\\s|,|\\.|\\?)";
-    private static final String EXPRESSION_PATTERN = "(\\[(\\d+|\\s|\\+|\\*|-|\\\\)+])";
+    private static final String EXPRESSION_PATTERN = "(\\[(\\d+|\\s|\\+|\\*|-|/)+])";
     private static final String OR = "|";
     private static final String LEXEME_PATTERN = WORD_PATTERN + OR + EXPRESSION_PATTERN;
     private final ExpressionRecognizer recognizer;

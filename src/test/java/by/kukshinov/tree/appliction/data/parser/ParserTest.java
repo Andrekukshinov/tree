@@ -12,8 +12,8 @@ import static org.mockito.Mockito.when;
 
 public class ParserTest {
     private static final String SENTENCE_FOR_SPLITTING = "  A [4 5+] years.";
-    private static final String PARAGRAPH_FOR_SPLITTING = " A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years.";
-    private static final String TEXT_FOR_SPLITTING = "" + "  A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years.\n" + " A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years.\n" + " A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years.\n" + " A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years.\n";
+    private static final String PARAGRAPH_FOR_SPLITTING = "  A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years.";
+    private static final String TEXT_FOR_SPLITTING = "  A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years.\n" + " A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years.\n" + " A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years.\n" + " A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years.\n";
 
 
     @Test(dataProvider = "getComponentWithExpression", dataProviderClass = ComponentProcessorTest.class)
