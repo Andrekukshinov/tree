@@ -33,7 +33,7 @@ public class LexemeComponent implements Component {
 
     @Override
     public List<Component> getChildren() {
-	   return Collections.unmodifiableList(new ArrayList<>());
+	   return Collections.emptyList();
     }
 
     @Override

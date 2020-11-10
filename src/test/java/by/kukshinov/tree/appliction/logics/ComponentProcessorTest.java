@@ -13,12 +13,11 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 public class ComponentProcessorTest {
     private static final String TEXT_FOR_SPLITTING = " A 36 years. A 36 years. A 36 years. A 36 years. A 36 years. A 36 years. A 36 years.\n" + " A 36 years. A 36 years. A 36 years. A 36 years. A 36 years. A 36 years. A 36 years.\n" + " A 36 years. A 36 years. A 36 years. A 36 years. A 36 years. A 36 years. A 36 years.\n" + " A 36 years. A 36 years. A 36 years. A 36 years. A 36 years. A 36 years. A 36 years.\n";
-    private static final String LEXEME_EXPRESSION = "[4 7 * 8 +]";
-    private static final String EXPRESSION = "4 7 * 8 +";
     private static final String EXPRESSION_RESULT = "36";
 
     private static Component getRootComponent(List<Component> expectedLexemes) {
@@ -52,9 +51,12 @@ public class ComponentProcessorTest {
 
 	   List<Component> lexemesExpression = Arrays
 			 .asList(a, space, expression, years, dot);
+	   List<Component> lexemesExpressionAdditionalSpace = Arrays
+			 .asList(space, a, space, expression, years, dot);
 	   Component rootTextWithExpressions = getRootComponent(lexemesExpression);
 
 	   Component sentenceExpression = new CompositeComponent(lexemesExpression);
+	   Component sentenceExpressionAdditionalSpace = new CompositeComponent(lexemesExpressionAdditionalSpace);
 	   List<Component> sentencesExpression = Arrays
 			 .asList(sentenceExpression, sentenceExpression, sentenceExpression,
 				    sentenceExpression, sentenceExpression, sentenceExpression,
@@ -100,7 +102,7 @@ public class ComponentProcessorTest {
 			 .equalsIgnoreCase(methodName)) {
 		  result = new Object[1][2];
 		  result[0][0] = rootTextWithExpressions;
-		  result[0][1] = rootTextWithExpressions;
+		  result[0][1] = rootTextWithNumbers;
 		  return result;
 	   }
 	   if ("testRestoreTextShouldRestoreTextFromComponent"
@@ -118,7 +120,7 @@ public class ComponentProcessorTest {
 	   }
 	   if ("testParseShouldParseGivenSentenceToComponent".equalsIgnoreCase(methodName)) {
 		  result = new Object[1][1];
-		  result[0][0] = sentenceExpression;
+		  result[0][0] = sentenceExpressionAdditionalSpace;
 		  return result;
 	   }
 	   if ("testParseShouldParseGivenParagraphToComponent"
@@ -145,12 +147,9 @@ public class ComponentProcessorTest {
     @Test(dataProvider = "getComponentWithExpression")
     public void testCalculateExpressionsShouldParseGivenComponentAndCalculateAllExpressions(
 		  Component start, Component expected) {
-	   ExpressionRecognizer recognizer = Mockito.mock(ExpressionRecognizer.class);
 	   Interpreter interpreter = Mockito.mock(Interpreter.class);
-	   ComponentProcessor componentProcessor = new ComponentProcessor(recognizer,
-			 interpreter);
-	   when(recognizer.isExpression(LEXEME_EXPRESSION)).thenReturn(true);
-	   when(interpreter.calculate(EXPRESSION)).thenReturn(EXPRESSION_RESULT);
+	   ComponentProcessor componentProcessor = new ComponentProcessor(interpreter);
+	   when(interpreter.calculate(anyString())).thenReturn(EXPRESSION_RESULT);
 
 	   Component actual = componentProcessor.calculateExpressions(start);
 
@@ -159,10 +158,8 @@ public class ComponentProcessorTest {
 
     @Test(dataProvider = "getComponentWithExpression")
     public void testRestoreTextShouldRestoreTextFromComponent(Component restoreFrom) {
-	   ExpressionRecognizer recognizer = Mockito.mock(ExpressionRecognizer.class);
 	   Interpreter interpreter = Mockito.mock(Interpreter.class);
-	   ComponentProcessor componentProcessor = new ComponentProcessor(recognizer,
-			 interpreter);
+	   ComponentProcessor componentProcessor = new ComponentProcessor(interpreter);
 
 	   String actual = componentProcessor.restoreText(restoreFrom);
 
@@ -172,10 +169,8 @@ public class ComponentProcessorTest {
     @Test(dataProvider = "getComponentWithExpression")
     public void testSortParagraphsByLengthShouldSortParagraphsInComponentBySentenceLength(
 		  Component forSorting, Component expected) {
-	   ExpressionRecognizer recognizer = Mockito.mock(ExpressionRecognizer.class);
 	   Interpreter interpreter = Mockito.mock(Interpreter.class);
-	   ComponentProcessor componentProcessor = new ComponentProcessor(recognizer,
-			 interpreter);
+	   ComponentProcessor componentProcessor = new ComponentProcessor(interpreter);
 
 	   Component actual = componentProcessor.sortParagraphsBySentenceLength(forSorting);
 
@@ -186,10 +181,8 @@ public class ComponentProcessorTest {
     @Test(dataProvider = "getComponentWithExpression")
     public void testSortSentenceByLexemeLengthShouldSortSentencesInComponentByLexemeLength(
 		  Component startComponent, Component expected) {
-	   ExpressionRecognizer recognizer = Mockito.mock(ExpressionRecognizer.class);
 	   Interpreter interpreter = Mockito.mock(Interpreter.class);
-	   ComponentProcessor componentProcessor = new ComponentProcessor(recognizer,
-			 interpreter);
+	   ComponentProcessor componentProcessor = new ComponentProcessor(interpreter);
 
 	   Component actual = componentProcessor.sortSentenceByLexemeLength(startComponent);
 

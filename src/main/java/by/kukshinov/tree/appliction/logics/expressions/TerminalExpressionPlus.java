@@ -2,7 +2,7 @@ package by.kukshinov.tree.appliction.logics.expressions;
 
 import by.kukshinov.tree.appliction.logics.Context;
 
-public class TerminalExpressionPlus extends AbstractMathExpression {
+public class TerminalExpressionPlus implements AbstractMathExpression {
     @Override
     public void interpret(Context c) {
 	   Integer firstOperand = c.popValue();

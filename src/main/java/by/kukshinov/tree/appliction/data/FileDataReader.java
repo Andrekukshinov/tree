@@ -7,7 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class FileDataReader {
+public class FileDataReader implements DataReader {
     private static final char NEW_LINE = '\n';
 
     public String readData(String filePath) throws DataException {

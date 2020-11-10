@@ -2,7 +2,7 @@ package by.kukshinov.tree.appliction.logics.expressions;
 
 import by.kukshinov.tree.appliction.logics.Context;
 
-public class NonTerminalExpressionNumber extends AbstractMathExpression {
+public class NonTerminalExpressionNumber implements AbstractMathExpression {
     private final int number;
 
     public NonTerminalExpressionNumber(int number) {

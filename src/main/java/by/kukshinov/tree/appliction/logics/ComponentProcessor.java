@@ -4,6 +4,7 @@ import by.kukshinov.tree.appliction.data.ExpressionRecognizer;
 import by.kukshinov.tree.appliction.model.Component;
 import by.kukshinov.tree.appliction.model.CompositeComponent;
 import by.kukshinov.tree.appliction.model.LexemeComponent;
+import by.kukshinov.tree.appliction.model.LexemeType;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -12,12 +13,11 @@ import java.util.List;
 public class ComponentProcessor {
     private static final int START_BRACKET_INDEX = 1;
     private static final char NEW_LINE = '\n';
-    private final ExpressionRecognizer recognizer;
     private final Interpreter interpreter;
 
     public ComponentProcessor(
-		  ExpressionRecognizer recognizer, Interpreter interpreter) {
-	   this.recognizer = recognizer;
+		   Interpreter interpreter) {
+
 	   this.interpreter = interpreter;
     }
 
@@ -32,7 +32,7 @@ public class ComponentProcessor {
 		  return new CompositeComponent(newBuiltComponents);
 	   } else {
 		  String stringValue = ((LexemeComponent) component).getValue();
-		  if (recognizer.isExpression(stringValue)) {
+		  if (((LexemeComponent) component).getType() == LexemeType.EXPRESSION) {
 			 String parsed = calculateExpression(stringValue, interpreter);
 			 return LexemeComponent.word(parsed);
 		  }

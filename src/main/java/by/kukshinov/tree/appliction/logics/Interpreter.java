@@ -40,6 +40,7 @@ public class Interpreter {
 				    listExpression
 						  .add(new NonTerminalExpressionNumber(scan.nextInt()));
 				}
+				break;
 		  }
 	   }
     }
