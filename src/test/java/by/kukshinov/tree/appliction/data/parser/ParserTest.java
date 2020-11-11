@@ -1,5 +1,6 @@
 package by.kukshinov.tree.appliction.data.parser;
 
+import by.kukshinov.tree.appliction.data.ComponentDataProvider;
 import by.kukshinov.tree.appliction.data.ExpressionRecognizer;
 import by.kukshinov.tree.appliction.logics.ComponentProcessorTest;
 import by.kukshinov.tree.appliction.model.Component;
@@ -16,7 +17,7 @@ public class ParserTest {
     private static final String TEXT_FOR_SPLITTING = "  A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years.\n" + " A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years.\n" + " A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years.\n" + " A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years. A [4 5+] years.\n";
 
 
-    @Test(dataProvider = "getComponentWithExpression", dataProviderClass = ComponentProcessorTest.class)
+    @Test(dataProvider = "getComponentWithExpression", dataProviderClass = ComponentDataProvider.class)
     public void testParseShouldParseGivenSentenceToComponent(Component expected) {
 	   ExpressionRecognizer recognizer = new ExpressionRecognizer();
 	   SentenceParser parser = new SentenceParser(recognizer);
@@ -26,7 +27,7 @@ public class ParserTest {
 	   Assert.assertEquals(parsed, expected);
     }
 
-    @Test(dataProvider = "getComponentWithExpression", dataProviderClass = ComponentProcessorTest.class)
+    @Test(dataProvider = "getComponentWithExpression", dataProviderClass = ComponentDataProvider.class)
     public void testParseShouldParseGivenParagraphToComponent(
 		  Component expected, Component sentence) {
 	   SentenceParser successor = Mockito.mock(SentenceParser.class);
@@ -38,7 +39,7 @@ public class ParserTest {
 	   Assert.assertEquals(parsed, expected);
     }
 
-    @Test(dataProvider = "getComponentWithExpression", dataProviderClass = ComponentProcessorTest.class)
+    @Test(dataProvider = "getComponentWithExpression", dataProviderClass = ComponentDataProvider.class)
     public void testParseShouldParseGivenTextToComponent(
 		  Component expected, Component paragraph) {
 	   ParagraphParser successor = Mockito.mock(ParagraphParser.class);

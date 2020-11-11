@@ -33,14 +33,14 @@ public class ComponentProcessor {
 	   } else {
 		  String stringValue = ((LexemeComponent) component).getValue();
 		  if (((LexemeComponent) component).getType() == LexemeType.EXPRESSION) {
-			 String parsed = calculateExpression(stringValue, interpreter);
+			 String parsed = calculateExpression(stringValue);
 			 return LexemeComponent.word(parsed);
 		  }
 		  return component;
 	   }
     }
 
-    private String calculateExpression(String stringValue, Interpreter interpreter) {
+    private String calculateExpression(String stringValue) {
 	   int stringLength = stringValue.length();
 	   String forCalculation = stringValue
 			 .substring(START_BRACKET_INDEX, stringLength - 1);
@@ -63,10 +63,12 @@ public class ComponentProcessor {
 
     public Component sortParagraphsBySentenceLength(Component root) {
 	   List<Component> resultParagraphs = new ArrayList<>(root.getChildren());
-	   resultParagraphs.sort(Comparator.comparingInt(sentence2 -> {
+
+	   Comparator<Component> comparator = Comparator.comparingInt(sentence2 -> {
 		  List<Component> sentences = sentence2.getChildren();
 		  return sentences.size();
-	   }));
+	   });
+	   resultParagraphs.sort(comparator);
 
 	   return new CompositeComponent(resultParagraphs);
     }
@@ -86,10 +88,13 @@ public class ComponentProcessor {
 
     private List<Component> getSortedLexemes(Component sentence) {
 	   List<Component> resultLexemes = new ArrayList<>(sentence.getChildren());
-	   resultLexemes.sort(Comparator.comparingInt(lexeme2 -> {
+
+	   Comparator<Component> comparator = Comparator.comparingInt(lexeme2 -> {
 		  String lexemeValue = ((LexemeComponent) lexeme2).getValue();
 		  return lexemeValue.length();
-	   }));
+	   });
+
+	   resultLexemes.sort(comparator);
 	   return resultLexemes;
     }
 }

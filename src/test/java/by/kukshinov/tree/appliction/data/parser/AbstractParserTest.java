@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class AbstractParserTest {
     private static final String PARAGRAPH_PATTERN = "(.|\\n)+?\\n";
     private static final String SENTENCE_PATTERN = ".*?[.!?]";
-    private static final String EXPRESSION_PATTERN = "([\\s.?!]\\w+|\\s|,|\\.|\\?)|(\\[(\\d+|\\s|\\+|\\*|-|\\\\)+])";
+    private static final String EXPRESSION_PATTERN = "([\\s.?!]\\w+|\\s|,|\\.|\\?)|(\\[(\\d+|\\s|\\+|\\*|-|/)+])";
 
 
     @Test
