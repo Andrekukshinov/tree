@@ -10,13 +10,13 @@ public class ChainBuilder {
 
     public Parser build() {
 	   ExpressionRecognizer recognizer = new ExpressionRecognizer();
-        SentenceParserFactory sentenceFactory = new SentenceParserFactory(recognizer);
+        ParserFactory sentenceFactory = new SentenceParserFactory(recognizer);
 	   Parser sentenceParser = sentenceFactory.createParser();
 
-        ParagraphParserFactory paragraphFactory= new ParagraphParserFactory(sentenceParser);
+	   ParserFactory paragraphFactory= new ParagraphParserFactory(sentenceParser);
 	   Parser paragraphParser = paragraphFactory.createParser();
 
-	   TextParserFactory textFactory= new TextParserFactory(paragraphParser);
+	   ParserFactory textFactory= new TextParserFactory(paragraphParser);
 	   return textFactory.createParser();
     }
 }
