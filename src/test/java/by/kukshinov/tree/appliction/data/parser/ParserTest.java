@@ -1,8 +1,6 @@
 package by.kukshinov.tree.appliction.data.parser;
 
 import by.kukshinov.tree.appliction.data.ComponentDataProvider;
-import by.kukshinov.tree.appliction.data.ExpressionRecognizer;
-import by.kukshinov.tree.appliction.logics.ComponentProcessorTest;
 import by.kukshinov.tree.appliction.model.Component;
 import org.mockito.Mockito;
 import org.testng.Assert;
@@ -19,8 +17,7 @@ public class ParserTest {
 
     @Test(dataProvider = "getComponentWithExpression", dataProviderClass = ComponentDataProvider.class)
     public void testParseShouldParseGivenSentenceToComponent(Component expected) {
-	   ExpressionRecognizer recognizer = new ExpressionRecognizer();
-	   SentenceParser parser = new SentenceParser(recognizer);
+	   SentenceParser parser = new SentenceParser();
 
 	   Component parsed = parser.parse(SENTENCE_FOR_SPLITTING);
 

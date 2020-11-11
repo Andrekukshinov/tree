@@ -10,23 +10,19 @@ public class ParagraphParser extends AbstractParser {
     private static final String SENTENCE_PATTERN = ".*?[.!?]";
 
     public ParagraphParser(Parser successor) {
-	   super(successor);
+        super(successor);
     }
 
     @Override
     protected Pattern getPattern() {
-	   return Pattern.compile(SENTENCE_PATTERN);
+        return Pattern.compile(SENTENCE_PATTERN);
     }
 
 
     @Override
-    protected void process(
-		  Matcher matcher, List<Component> paragraphsList) {
-	   while (matcher.find()) {
-		  String paragraph = matcher.group();
-		  Parser successor = getSuccessor();
-		  Component parsed = successor.parse(paragraph);
-		  paragraphsList.add(parsed);
-	   }
+    protected void process(String paragraph, List<Component> paragraphsList) {
+            Parser successor = getSuccessor();
+            Component parsed = successor.parse(paragraph);
+            paragraphsList.add(parsed);
     }
 }

@@ -1,6 +1,5 @@
 package by.kukshinov.tree.appliction.data.parser;
 
-import by.kukshinov.tree.appliction.data.ExpressionRecognizer;
 import org.mockito.Mockito;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -37,8 +36,7 @@ public class AbstractParserTest {
 
     @Test
     public void testGetPatternShouldReturnLexemePattern() {
-	   ExpressionRecognizer recognizer = Mockito.mock(ExpressionRecognizer.class);
-	   SentenceParser parser = new SentenceParser(recognizer);
+	   SentenceParser parser = new SentenceParser();
 	   Pattern pattern = parser.getPattern();
 
 	   String actual = pattern.toString();

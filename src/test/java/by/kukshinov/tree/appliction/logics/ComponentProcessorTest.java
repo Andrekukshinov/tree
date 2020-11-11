@@ -21,8 +21,7 @@ public class ComponentProcessorTest {
     private static final String EXPRESSION_RESULT = "36";
 
     @Test(dataProvider = "getComponentWithExpression", dataProviderClass = ComponentDataProvider.class)
-    public void testCalculateExpressionsShouldParseGivenComponentAndCalculateAllExpressions(
-		  Component expected, Component start) {
+    public void testCalculateExpressionsShouldParseGivenComponentAndCalculateAllExpressions(Component expected, Component start) {
 	   Interpreter interpreter = Mockito.mock(Interpreter.class);
 	   ComponentProcessor componentProcessor = new ComponentProcessor(interpreter);
 	   when(interpreter.calculate(anyString())).thenReturn(EXPRESSION_RESULT);
@@ -43,8 +42,7 @@ public class ComponentProcessorTest {
     }
 
     @Test(dataProvider = "getComponentWithExpression", dataProviderClass = ComponentDataProvider.class)
-    public void testSortParagraphsByLengthShouldSortParagraphsInComponentBySentenceLength(
-		  Component expected, Component forSorting) {
+    public void testSortParagraphsByLengthShouldSortParagraphsInComponentBySentenceLength(Component expected, Component forSorting) {
 	   Interpreter interpreter = Mockito.mock(Interpreter.class);
 	   ComponentProcessor componentProcessor = new ComponentProcessor(interpreter);
 
@@ -55,8 +53,7 @@ public class ComponentProcessorTest {
     }
 
     @Test(dataProvider = "getComponentWithExpression", dataProviderClass = ComponentDataProvider.class)
-    public void testSortSentenceByLexemeLengthShouldSortSentencesInComponentByLexemeLength(
-		  Component expected, Component startComponent) {
+    public void testSortSentenceByLexemeLengthShouldSortSentencesInComponentByLexemeLength(Component expected, Component startComponent) {
 	   Interpreter interpreter = Mockito.mock(Interpreter.class);
 	   ComponentProcessor componentProcessor = new ComponentProcessor(interpreter);
 

@@ -16,7 +16,7 @@ public class FileDataReaderTest {
     public void testReadDataShouldReadDataFromFileAndReturnString() throws DataException {
 	   FileDataReader dataReader = new FileDataReader();
 
-	   String actual = dataReader.readData(FILE_PATH);
+	   String actual = dataReader.read(FILE_PATH);
 
 	   Assert.assertEquals(actual, EXPECTED);
     }
@@ -25,6 +25,6 @@ public class FileDataReaderTest {
     public void testReadDataShouldThrowException() throws DataException {
 	   FileDataReader dataReader = new FileDataReader();
 
-	   String actual = dataReader.readData(INVALID_PATH);
+	   String actual = dataReader.read(INVALID_PATH);
     }
 }

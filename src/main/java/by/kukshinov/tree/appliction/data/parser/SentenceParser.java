@@ -1,6 +1,5 @@
 package by.kukshinov.tree.appliction.data.parser;
 
-import by.kukshinov.tree.appliction.data.ExpressionRecognizer;
 import by.kukshinov.tree.appliction.model.Component;
 import by.kukshinov.tree.appliction.model.LexemeComponent;
 
@@ -14,30 +13,28 @@ public class SentenceParser extends AbstractParser {
     private static final String EXPRESSION_PATTERN = "(\\[(\\d+|\\s|\\+|\\*|-|/)+])";
     private static final String OR = "|";
     private static final String LEXEME_PATTERN = WORD_PATTERN + OR + EXPRESSION_PATTERN;
-    private final ExpressionRecognizer recognizer;
+    private static final String EXPRESSION_PREFIX = "[";
 
-    public SentenceParser(
-		  ExpressionRecognizer recognizer) {
-	   super(null);
-	   this.recognizer = recognizer;
+    public SentenceParser() {
+        super(null);
     }
 
     @Override
     protected Pattern getPattern() {
-	   return Pattern.compile(LEXEME_PATTERN);
+        return Pattern.compile(LEXEME_PATTERN);
     }
 
 
     @Override
-    protected void process(
-		  Matcher matcher, List<Component> lexemesList) {
-	   while (matcher.find()) {
-		  String lexeme = matcher.group();
-		  if (recognizer.isExpression(lexeme)) {
-			 lexemesList.add(LexemeComponent.expression(lexeme));
-		  } else {
-			 lexemesList.add(LexemeComponent.word(lexeme));
-		  }
-	   }
+    protected void process(String lexeme, List<Component> lexemesList) {
+            if (isExpression(lexeme)) {
+                lexemesList.add(LexemeComponent.expression(lexeme));
+            } else {
+                lexemesList.add(LexemeComponent.word(lexeme));
+            }
+    }
+    private boolean isExpression(String lexeme) {
+        return lexeme.startsWith(EXPRESSION_PREFIX);
     }
 }
+
