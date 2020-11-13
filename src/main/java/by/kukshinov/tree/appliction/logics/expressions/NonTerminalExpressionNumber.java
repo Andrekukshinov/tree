@@ -10,7 +10,7 @@ public class NonTerminalExpressionNumber implements AbstractMathExpression {
     }
 
     @Override
-    public void interpret(Context c) {
-        c.pushValue(number);
+    public void interpret(Context context) {
+        context.pushValue(number);
     }
 }

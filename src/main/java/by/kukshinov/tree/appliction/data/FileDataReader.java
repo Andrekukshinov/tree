@@ -6,21 +6,18 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FileDataReader implements DataReader {
-    private static final char NEW_LINE = '\n';
+    private static final String NEW_LINE = "\n";
 
     public String read(String filePath) throws DataException {
         Path path = Paths.get(filePath);
-        StringBuilder resultBuilder = new StringBuilder();
+        String resultBuilder;
         try {
             List<String> fileLines = Files.readAllLines(path, StandardCharsets.UTF_8);
-            //joining
-            fileLines.forEach(line -> {
-                StringBuilder appendLine = resultBuilder.append(line);
-                appendLine.append(NEW_LINE);
-            });
-            return resultBuilder.toString();
+            resultBuilder = String.join(NEW_LINE, fileLines);
+            return resultBuilder;
         } catch (IOException e) {
             throw new DataException(e.getMessage(), e);
         }

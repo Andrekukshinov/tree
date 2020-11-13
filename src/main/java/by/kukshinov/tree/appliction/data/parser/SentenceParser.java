@@ -15,13 +15,13 @@ public class SentenceParser extends AbstractParser {
     private static final String LEXEME_PATTERN = WORD_PATTERN + OR + EXPRESSION_PATTERN;
     private static final String EXPRESSION_PREFIX = "[";
 
-    public SentenceParser() {
-        super(null);
+    public SentenceParser(Parser successor) {
+        super(successor);
     }
 
     @Override
-    protected Pattern getPattern() {
-        return Pattern.compile(LEXEME_PATTERN);
+    protected String getPattern() {
+        return LEXEME_PATTERN;
     }
 
 

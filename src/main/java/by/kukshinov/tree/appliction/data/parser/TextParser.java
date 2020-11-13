@@ -14,17 +14,8 @@ public class TextParser extends AbstractParser {
     }
 
     @Override
-    protected Pattern getPattern() {
-        return Pattern.compile(PARAGRAPH_PATTERN);
+    protected String getPattern() {
+        return PARAGRAPH_PATTERN;
     }
-
-    @Override
-    protected void process(String paragraph, List<Component> paragraphsList) {
-            Parser successor = getSuccessor();
-            Component parsed = successor.parse(paragraph);
-            paragraphsList.add(parsed);
-    }
-
-
 }
 

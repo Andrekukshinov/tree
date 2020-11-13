@@ -8,7 +8,7 @@ import by.kukshinov.tree.appliction.data.parser.TextParser;
 public class ChainBuilder {
 
     public Parser build() {
-        Parser sentenceParser = new SentenceParser();
+        Parser sentenceParser = new SentenceParser(null);
 
         Parser paragraphParser = new ParagraphParser(sentenceParser);
 

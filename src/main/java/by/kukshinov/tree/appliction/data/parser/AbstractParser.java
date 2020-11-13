@@ -19,14 +19,18 @@ public abstract class AbstractParser implements Parser {
         return successor;
     }
 
-    //rework
-    protected abstract Pattern getPattern();
+    protected abstract String getPattern();
 
-    protected abstract void process(String value, List<Component> childrenComponents);
+    protected void process(String value, List<Component> childrenComponents) {
+        Parser successor = getSuccessor();
+        Component parsed = successor.parse(value);
+        childrenComponents.add(parsed);
+    }
+
 
     @Override
     public Component parse(String text) {
-        Pattern pattern = getPattern();
+        Pattern pattern = Pattern.compile(getPattern());
         Matcher matcher = pattern.matcher(text);
         List<Component> childrenComponents = new ArrayList<>();
         while (matcher.find()) {

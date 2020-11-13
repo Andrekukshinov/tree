@@ -16,9 +16,8 @@ public class AbstractParserTest {
     public void testGetPatternShouldReturnParagraphPattern() {
 	   Parser successor = Mockito.mock(Parser.class);
 	   TextParser parser = new TextParser(successor);
-	   Pattern pattern = parser.getPattern();
 
-	   String actual = pattern.toString();
+	   String actual = parser.getPattern();
 
 	   Assert.assertEquals(actual, PARAGRAPH_PATTERN);
     }
@@ -27,19 +26,17 @@ public class AbstractParserTest {
     public void testGetPatternShouldReturnSentencePattern() {
 	   Parser successor = Mockito.mock(Parser.class);
 	   ParagraphParser parser = new ParagraphParser(successor);
-	   Pattern pattern = parser.getPattern();
 
-	   String actual = pattern.toString();
+	   String actual = parser.getPattern();
 
 	   Assert.assertEquals(actual, SENTENCE_PATTERN);
     }
 
     @Test
     public void testGetPatternShouldReturnLexemePattern() {
-	   SentenceParser parser = new SentenceParser();
-	   Pattern pattern = parser.getPattern();
+	   SentenceParser parser = new SentenceParser(null);
 
-	   String actual = pattern.toString();
+	   String actual = parser.getPattern();
 
 	   Assert.assertEquals(actual, EXPRESSION_PATTERN);
     }

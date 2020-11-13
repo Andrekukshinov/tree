@@ -9,7 +9,7 @@ public class FileDataReaderTest {
     private static final String EXPECTED =
 		  " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, tenetur.\n" +
 		  " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, ratione recusandae!\n" +
-		  " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque eaque neque?\n";
+		  " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque eaque neque?";
     public static final String INVALID_PATH = "FILE_PATH";
 
     @Test
